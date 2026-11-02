@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light"><head><script>document.documentElement.setAttribute('data-theme', 'light');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Canevas Wattles">
+<meta name="theme-color" content="#1c1917">
+<title>Canevas de la « Certaine Manière »</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+  :root{
+    --s50:#fafaf9;--s100:#f5f5f4;--s200:#e7e5e4;--s300:#d6d3d1;--s400:#a8a29e;
+    --s500:#78716c;--s600:#57534e;--s700:#44403c;--s800:#292524;--s900:#1c1917;
+    --a700:#b45309;--a600:#d97706;--a300:#fcd34d;--a400:#fbbf24;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  body{font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--s100);color:var(--s900);
+       padding-bottom:64px;-webkit-font-smoothing:antialiased;line-height:1.4}
+  button,input,textarea{font-family:inherit}
+  button{cursor:pointer}
+  :focus-visible{outline:2px solid var(--a700);outline-offset:2px}
+
+  header{position:sticky;top:0;z-index:30;background:var(--s50);border-bottom:1px solid var(--s300)}
+  .hwrap{max-width:896px;margin:0 auto;padding:12px 16px;display:flex;flex-direction:column;gap:12px}
+  .eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--s500);font-weight:500}
+  h1{font-size:18px;font-weight:700;letter-spacing:-.01em;color:var(--s900)}
+  .tools{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+  .seg{display:inline-flex;border:1px solid var(--s300);background:#fff}
+  .seg button{border:0;background:#fff;color:var(--s600);padding:7px 11px;font-size:12px;font-weight:600;
+              text-transform:uppercase;letter-spacing:.05em}
+  .seg button+button{border-left:1px solid var(--s300)}
+  .seg button.on{background:var(--s900);color:#fff}
+  .dl{border:0;background:var(--a700);color:#fff;padding:7px 11px;font-size:12px;font-weight:600;
+      text-transform:uppercase;letter-spacing:.05em}
+  .dl:hover{background:#92400e}
+
+  main{max-width:896px;margin:0 auto;padding:24px 16px 0}
+  .box{background:#fff;border:1px solid var(--s300)}
+  .info{margin-bottom:24px;padding:16px;font-size:12px;color:var(--s700);line-height:1.55}
+  .info b.t{display:block;text-transform:uppercase;letter-spacing:.05em;color:var(--s900);margin-bottom:2px}
+  .hero{background:var(--s900);color:var(--s100);padding:16px 20px;border-left:4px solid var(--a600);margin-bottom:16px}
+  .hero .e{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--a300);font-weight:600;margin-bottom:4px}
+  .hero p{font-size:13px;line-height:1.6;color:var(--s200)}
+  .view{display:none}.view.on{display:block}
+
+  .bloc{background:#fff;border:1px solid var(--s300);margin-bottom:16px}
+  .bloc.done{background:var(--s50);border-color:var(--s400)}
+  .bpad{padding:18px}
+  .brow{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+  .num{font:700 12px ui-monospace,Menlo,Consolas,monospace;background:var(--s200);padding:2px 8px;color:var(--s800)}
+  .time{font-size:12px;color:var(--s500);letter-spacing:.05em;text-transform:uppercase;font-weight:500;margin-left:8px}
+  .mark{border:1px solid var(--s300);background:#fff;color:var(--s600);font-size:12px;font-weight:500;padding:5px 10px;white-space:nowrap}
+  .mark:hover{border-color:var(--s600)}
+  .bloc.done .mark{background:var(--s800);color:#fff;border-color:var(--s800)}
+  .bloc h2{font-size:17px;font-weight:700;margin-top:8px;color:var(--s900)}
+  .grid2{margin-top:12px;display:grid;grid-template-columns:1fr;gap:12px;font-size:12px;color:var(--s700);
+         background:var(--s50);padding:12px;border:1px solid var(--s200)}
+  .grid2 span{display:block;font-weight:600;color:var(--s900);margin-bottom:2px;text-transform:uppercase;letter-spacing:.05em;font-size:10px}
+  .quote{margin-top:12px;padding:10px 12px;background:var(--s100);border-left:2px solid var(--s400);font-style:italic;font-size:12px;color:var(--s800)}
+  .chk{margin-top:12px;padding-top:12px;border-top:1px solid var(--s200)}
+  .chk .l{font-size:10px;text-transform:uppercase;letter-spacing:.05em;font-weight:600;color:var(--s500);margin-bottom:6px}
+  .chk li{list-style:none;font-size:12px;color:var(--s700);display:flex;gap:8px;align-items:baseline;margin-bottom:4px}
+  .chk li:before{content:"›";color:var(--a700);font-weight:700}
+
+  .card{background:#fff;border:1px solid var(--s300);padding:18px;margin-bottom:16px}
+  .chead{border-bottom:1px solid var(--s200);padding-bottom:12px;margin-bottom:16px;display:flex;flex-direction:column;gap:8px}
+  .chead h2{font-size:17px;font-weight:700;color:var(--s900)}
+  .btns{display:flex;gap:8px;flex-wrap:wrap}
+  .b1,.b2{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;padding:7px 12px}
+  .b1{background:var(--s900);color:#fff;border:1px solid var(--s900)}.b1:hover{background:var(--s800)}
+  .b2{background:#fff;color:var(--s700);border:1px solid var(--s300)}.b2:hover{background:var(--s50)}
+  .desc{font-size:12px;color:var(--s600);margin-bottom:12px;line-height:1.6}
+  .act{display:flex;align-items:center;gap:10px;padding:10px;border:1px solid var(--s300);margin-bottom:10px;background:#fff}
+  .act.d{background:var(--s50)}
+  .act input[type=checkbox]{width:18px;height:18px;accent-color:var(--s900);flex:none}
+  .act .n{font:700 12px ui-monospace,Menlo,Consolas,monospace;color:var(--s400)}
+  .act input[type=text]{flex:1;min-width:0;border:0;background:transparent;font-size:14px;color:var(--s900);outline:0}
+  .act.d input[type=text]{text-decoration:line-through;color:var(--s400)}
+  label.f{display:block;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--s700);margin-bottom:4px}
+  textarea,.inp{width:100%;font-size:14px;padding:10px;border:1px solid var(--s300);background:var(--s50);color:var(--s900);resize:vertical}
+  textarea:focus,.inp:focus{background:#fff}
+  .fg{margin-bottom:14px}
+  .foot{display:flex;flex-direction:column;gap:8px;padding-top:6px}
+  .foot span{font-size:11px;color:var(--s500)}
+  .foot .b1{width:100%}
+
+  .law{padding:18px;border-bottom:1px solid var(--s200)}
+  .law:last-child{border-bottom:0}
+  .law .k{font:700 10px ui-monospace,Menlo,Consolas,monospace;color:var(--a700);margin-bottom:4px}
+  .law h3{font-size:14px;font-weight:700;margin-bottom:4px;color:var(--s900)}
+  .law p{font-size:12px;color:var(--s600);line-height:1.6}
+
+  @media (min-width:640px){
+    .hwrap{padding:16px}
+    h1{font-size:20px}
+    .grid2{grid-template-columns:1fr 1fr}
+    .chead{flex-direction:row;justify-content:space-between;align-items:center}
+    .foot{flex-direction:row;justify-content:space-between;align-items:center}
+    .foot .b1{width:auto}
+  }
+  @media (min-width:768px){
+    .hwrap{flex-direction:row;justify-content:space-between;align-items:center}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="hwrap">
+    <div>
+      <div class="eyebrow">Système Quotidien • Wallace D. Wattles</div>
+      <h1>Canevas de la « Certaine Manière »</h1>
+    </div>
+    <div class="tools">
+      <div class="seg" role="tablist">
+        <button class="on" data-tab="canvas">Blocs</button>
+        <button data-tab="action">Fiche Jour</button>
+        <button data-tab="principles">Principes</button>
+      </div>
+      <button class="dl" id="dl" title="Télécharger ce fichier HTML autonome">Sauvegarder en HTML</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="box info">
+    <b class="t">Usage PC et Mobile</b>
+    Ce fichier est autonome : ouvrez-le dans n'importe quel navigateur (PC ou téléphone). Vos saisies sont mémorisées sur l'appareil. Sur téléphone, utilisez « Ajouter à l'écran d'accueil » depuis le menu du navigateur.
+  </div>
+
+  <section id="v-canvas" class="view on">
+    <div class="hero">
+      <div class="e">Axe d'expansion entrepreneuriale</div>
+      <p>Vous ne sortez pas de votre position actuelle par hasard : vous en sortez en devenant <strong>trop grand pour elle</strong>. Chaque bloc exécuté avec rigueur transforme votre travail en une école de direction d'entreprise.</p>
+    </div>
+    <div id="blocks"></div>
+  </section>
+
+  <section id="v-action" class="view">
+    <div class="card">
+      <div class="chead">
+        <div>
+          <div class="eyebrow">Filtre du matin</div>
+          <h2>Les 2 à 3 Actes Maîtres du Jour</h2>
+        </div>
+        <div class="btns">
+          <button class="b2" id="copy">Copier bilan</button>
+          <button class="b1" id="save1">Enregistrer</button>
+        </div>
+      </div>
+      <p class="desc">Accomplissez ces actes avec une netteté chirurgicale. Une tâche à la fois.</p>
+      <div id="actes"></div>
+    </div>
+
+    <div class="card">
+      <div class="chead">
+        <div>
+          <div class="eyebrow">Le Sas du soir</div>
+          <h2>Journal d'Accroissement et d'Efficacité</h2>
+        </div>
+      </div>
+      <div class="fg">
+        <label class="f" for="j1">1. Mon acte le plus efficace aujourd'hui (Pleine présence) :</label>
+        <textarea id="j1" rows="2" placeholder="Ex: Rédaction du protocole de contrôle en 45 min sans distraction."></textarea>
+      </div>
+      <div class="fg">
+        <label class="f" for="j2">2. L'échange où j'ai communiqué l'accroissement (Valeur &gt; attente) :</label>
+        <textarea id="j2" rows="2" placeholder="Ex: Échange avec X : apporté une solution limpide sans me plaindre."></textarea>
+      </div>
+      <div class="fg">
+        <label class="f" for="j3">3. Ajustement pour demain (Sans culpabilité) :</label>
+        <input class="inp" id="j3" type="text" placeholder="Ex: Couper la messagerie 30 min plus tôt pour éviter la hâte.">
+      </div>
+      <div class="foot">
+        <span id="notice">Modifications enregistrables à tout moment.</span>
+        <button class="b1" id="save2">Sauvegarder la journée</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="v-principles" class="view">
+    <div class="box">
+      <div class="law"><div class="k">LOI 1</div><h3>Création vs Compétition</h3><p>Dans l'esprit de compétition, vous vous battez pour ce qui existe déjà. Dans l'esprit de création, vous générez une valeur nouvelle à partir de votre esprit. Nul besoin d'écraser autrui : les opportunités sont infinies.</p></div>
+      <div class="law"><div class="k">LOI 2</div><h3>Valeur d'usage &gt; Valeur d'échange</h3><p>Assurez-vous que l'utilité, le temps gagné et l'impact que reçoit votre interlocuteur dépassent largement ce qu'il vous verse en argent. Cette asymétrie crée une attraction naturelle durable.</p></div>
+      <div class="law"><div class="k">LOI 3</div><h3>Remplir plus que sa place actuelle (Overfilling)</h3><p>On ne devient pas indépendant en fuyant ou en bâclant son poste actuel, mais en y mettant tellement de maîtrise et de valeur que le cadre devient trop étroit pour contenir votre envergure.</p></div>
+      <div class="law"><div class="k">LOI 4</div><h3>L'interdiction absolue de la plainte</h3><p>Parler de crise, de lenteur ou de manque imprime la forme de la pénurie dans votre subconscient. Communiquez et agissez toujours sous l'angle du progrès et des solutions.</p></div>
+    </div>
+  </section>
+</main>
+
+<script>
+(function(){
+  // Copie propre du fichier, prise avant toute modification du DOM
+  var SOURCE = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+
+  var BLOCKS = [
+    {id:'bloc1',num:'01',time:'07:00 - 07:10',title:'Le Sas de Réveil : Alignement Intérieur',
+     posture:"Assis dos droit, aucun écran.",action:"Visualiser l'entreprise cible et formuler l'intention ferme.",
+     quote:"« Ma vie et mes affaires sont en constante expansion. Aujourd'hui, chaque geste compte et chaque échange élève. »",
+     checklist:['Respiration calme (1 min)','Projection nette de la liberté entrepreneuriale','Gratitude sincère pour 3 compétences déjà acquises']},
+    {id:'bloc2',num:'02',time:'08:30 - 08:35',title:'Le Filtre Décisif : Les 2 à 3 Actes Maîtres',
+     posture:"Clarté radicale avant d'ouvrir les boîtes e-mails.",action:"Sélectionner uniquement les actions qui créent de la valeur réelle.",
+     quote:"« Ce n'est pas le nombre de choses que vous faites qui compte, mais l'efficacité de chaque acte séparé. »",
+     checklist:["Actes orientés création (aucun micro-bruit administratif superflu)","Impact direct sur la trajectoire d'indépendance","Engagement d'achèvement sans retouche ni dispersion"]},
+    {id:'bloc3',num:'03',time:'Journée',title:"L'Exécution Pure : L'Acte Efficace au Présent",
+     posture:"Blocs de 60 à 90 min en immersion totale.",action:"Mettre 100% de sa puissance mentale dans chaque geste unique.",
+     quote:"« Pas de précipitation. La hâte est l'expression de la peur du manque. Travaillez avec calme et autorité. »",
+     checklist:['Zéro multitâche, notifications coupées','Vitesse sans précipitation : précision chirurgicale',"Traiter chaque livrable avec le standard d'un fondateur"]},
+    {id:'bloc4',num:'04',time:'En continu',title:"Le Sas Relationnel : L'Empreinte d'Accroissement",
+     posture:"Temps d'arrêt de 2 secondes avant chaque interaction.",action:"Donner plus en valeur d'usage qu'on ne reçoit en retour.",
+     quote:"« Laissez chaque personne avec le sentiment d'avoir progressé, compris ou gagné en assurance. »",
+     checklist:['Bannir toute plainte, critique ou discours de pénurie','Écouter pour faire grandir, non pour convaincre ou dominer','Offrir une clarté ou une solution concrète']},
+    {id:'bloc5',num:'05',time:'21:30 - 21:40',title:'Le Sas du Soir : Clôture par la Preuve',
+     posture:"Carnet de bord et déconnexion.",action:"Ancrer les preuves concrètes d'expansion et apaiser l'esprit.",
+     quote:"« Endormez-vous avec l'assurance que la structure de votre affaire s'est consolidée d'un cran. »",
+     checklist:["Identifier l'acte le plus net et réussi du jour","Identifier la personne ayant bénéficié de votre accroissement",'Remise à zéro sans culpabilité pour les imperfections']}
+  ];
+
+  var actes = [{id:1,text:'',done:false},{id:2,text:'',done:false},{id:3,text:'',done:false}];
+  var journal = {acteEfficace:'',acteAccroissement:'',lecon:''};
+  var blocks = {};
+
+  function load(){
+    try{
+      var a=localStorage.getItem('sw_actes'); if(a) actes=JSON.parse(a);
+      var j=localStorage.getItem('sw_journal'); if(j) journal=JSON.parse(j);
+      var b=localStorage.getItem('sw_blocks'); if(b) blocks=JSON.parse(b);
+    }catch(e){}
+  }
+  function save(){
+    try{
+      localStorage.setItem('sw_actes',JSON.stringify(actes));
+      localStorage.setItem('sw_journal',JSON.stringify(journal));
+      localStorage.setItem('sw_blocks',JSON.stringify(blocks));
+      return true;
+    }catch(e){return false}
+  }
+  function esc(s){return String(s).replace(/&/g,'&').replace(/</g,'<').replace(/>/g,'>').replace(/"/g,'"')}
+
+  function renderBlocks(){
+    document.getElementById('blocks').innerHTML = BLOCKS.map(function(b){
+      return '<div class="bloc'+(blocks[b.id]?' done':'')+'"><div class="bpad">'+
+        '<div class="brow"><div><span class="num">'+b.num+'</span><span class="time">'+esc(b.time)+'</span></div>'+
+        '<button class="mark" data-b="'+b.id+'">'+(blocks[b.id]?'✓ Validé':'Marquer fait')+'</button></div>'+
+        '<h2>'+esc(b.title)+'</h2>'+
+        '<div class="grid2"><div><span>Posture & Contexte</span>'+esc(b.posture)+'</div><div><span>Action Décisive</span>'+esc(b.action)+'</div></div>'+
+        '<div class="quote">'+esc(b.quote)+'</div>'+
+        '<div class="chk"><div class="l">Points de vérification</div><ul>'+
+        b.checklist.map(function(c){return '<li>'+esc(c)+'</li>'}).join('')+'</ul></div></div></div>';
+    }).join('');
+  }
+
+  function renderActes(){
+    document.getElementById('actes').innerHTML = actes.map(function(t,i){
+      return '<div class="act'+(t.done?' d':'')+'">'+
+        '<input type="checkbox" data-c="'+t.id+'"'+(t.done?' checked':'')+' aria-label="Acte '+(i+1)+' accompli">'+
+        '<span class="n">0'+(i+1)+'</span>'+
+        '<input type="text" data-t="'+t.id+'" placeholder="Acte maître #'+(i+1)+'" value="'+esc(t.text)+'"></div>';
+    }).join('');
+  }
+
+  function setJournalFields(){
+    document.getElementById('j1').value=journal.acteEfficace||'';
+    document.getElementById('j2').value=journal.acteAccroissement||'';
+    document.getElementById('j3').value=journal.lecon||'';
+  }
+
+  var noticeEl=document.getElementById('notice');
+  function flash(msg){
+    noticeEl.textContent=msg;
+    setTimeout(function(){noticeEl.textContent='Modifications enregistrables à tout moment.'},2000);
+  }
+
+  // Onglets
+  document.querySelectorAll('[data-tab]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      document.querySelectorAll('[data-tab]').forEach(function(b){b.classList.toggle('on',b===btn)});
+      document.querySelectorAll('.view').forEach(function(v){v.classList.remove('on')});
+      document.getElementById('v-'+btn.getAttribute('data-tab')).classList.add('on');
+      window.scrollTo(0,0);
+    });
+  });
+
+  // Blocs
+  document.getElementById('blocks').addEventListener('click',function(e){
+    var id=e.target.getAttribute('data-b'); if(!id) return;
+    blocks[id]=!blocks[id]; save(); renderBlocks();
+  });
+
+  // Actes
+  var actesEl=document.getElementById('actes');
+  actesEl.addEventListener('change',function(e){
+    var id=e.target.getAttribute('data-c'); if(!id) return;
+    actes.forEach(function(t){ if(String(t.id)===id) t.done=e.target.checked });
+    save(); renderActes();
+  });
+  actesEl.addEventListener('input',function(e){
+    var id=e.target.getAttribute('data-t'); if(!id) return;
+    actes.forEach(function(t){ if(String(t.id)===id) t.text=e.target.value });
+    save();
+  });
+
+  // Journal
+  [['j1','acteEfficace'],['j2','acteAccroissement'],['j3','lecon']].forEach(function(p){
+    document.getElementById(p[0]).addEventListener('input',function(e){ journal[p[1]]=e.target.value });
+  });
+  function manualSave(){ flash(save()?'Données sauvegardées en mémoire locale !':'Sauvegarde locale indisponible sur ce navigateur.') }
+  document.getElementById('save1').addEventListener('click',manualSave);
+  document.getElementById('save2').addEventListener('click',manualSave);
+
+  // Copier bilan
+  document.getElementById('copy').addEventListener('click',function(){
+    var btn=this;
+    var today=new Date().toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+    var txt='=== BILAN WATTLES DU '+today.toUpperCase()+' ===\n\n-- ACTES MAÎTRES --\n'+
+      actes.map(function(t,i){return (i+1)+'. ['+(t.done?'X':' ')+'] '+(t.text||'(Non défini)')}).join('\n')+
+      '\n\n-- BILAN DU SOIR --\n• Acte le plus efficace : '+(journal.acteEfficace||'N/A')+
+      '\n• Acte d\'accroissement : '+(journal.acteAccroissement||'N/A')+
+      '\n• Ajustement demain : '+(journal.lecon||'N/A')+
+      '\n\nDevise : « Valeur d\'usage > Valeur d\'échange • Chaque acte un acte efficace »';
+    function ok(){ btn.textContent='Copié !'; setTimeout(function(){btn.textContent='Copier bilan'},2500) }
+    function fallback(){
+      var ta=document.createElement('textarea'); ta.value=txt; ta.style.position='fixed'; ta.style.opacity='0';
+      document.body.appendChild(ta); ta.select();
+      try{document.execCommand('copy'); ok()}catch(e){}
+      document.body.removeChild(ta);
+    }
+    if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(ok,fallback) } else { fallback() }
+  });
+
+  // Télécharger ce fichier
+  document.getElementById('dl').addEventListener('click',function(){
+    var blob=new Blob([SOURCE],{type:'text/html'});
+    var url=URL.createObjectURL(blob);
+    var a=document.createElement('a'); a.href=url; a.download='canevas_wattles.html';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function(){URL.revokeObjectURL(url)},1000);
+  });
+
+  load(); renderBlocks(); renderActes(); setJournalFields();
+})();
+</script></body></html>
